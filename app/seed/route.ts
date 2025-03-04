@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import postgres from 'postgres';
 import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 
@@ -108,6 +108,12 @@ export async function GET() {
       seedCustomers(),
       seedInvoices(),
       seedRevenue(),
+      //drop the tables like this
+      // sql`drop table users`,
+      // sql`drop table customers`,
+      // sql`drop table invoices`,
+      // sql`drop table revenue`,
+
     ]);
 
     return Response.json({ message: 'Database seeded successfully' });
